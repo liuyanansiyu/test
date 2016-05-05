@@ -1,0 +1,37 @@
+
+.sunday td {
+	background-color: #D3E9F3;
+	font-size: 18px;
+	text-align: center;
+	height: 35px;
+	line-height: 35px;
+}
+.sunday td.weekend_ms {
+	background-color: #F60;
+	color: #FFF
+}
+.CAL_div {
+	margin: 10px auto;
+	width: 99%;
+	height: auto;
+	position: relative;
+}
+.canlder {
+	border-collapse: collapse;
+	border: none;
+}
+.canlder thead tr {
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid #22AADF;
+}
+.canlder thead tr th div {
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+.canlder td {
+	border: 1px solid #22AADF;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Jack万年历</title>
+		<link rel="stylesheet" href="css/canlder.css" />
+		<script type="text/javascript" src="js/canlder.js"></script>
+	</head>
+
+	<body onload="Canlder.initial()" style="margin:0;">
+		<!--日历内容区 开始-->
+		<div class="CAL_div">
+			<!--嵌入万年历代码 开始-->
+			<form name="CLD" id="CLD">
+				<table class="canlder" cellSpacing="0" cellPadding="0" width="100%" align="center" border="0">
+					<thead>
+						<tr>
+							<th colspan="7">
+								<div onclick="Canlder.pushBtm('MU')" style="width:15%;">上月</div>
+								<div class="sm" style="width:50%;">
+									<select onchange="Canlder.changeCld()" name="SY" id="SY">
+										<script>
+											var year = new Date().getYear() + 1900;
+											for (var i = 1900; i < 2049; i++) {
+												if (year == i) {
+													document.write("<option value=" + i + " selected>" + i + "</option>");
+												} else {
+													document.write("<option value=" + i + " >" + i + "</option>");
+												}
+											}
+										</script>
+									</select>
+									年
+									<select onchange="Canlder.changeCld()" name=SM id="SM">
+										<script>
+											var month = new Date().getMonth() + 1;
+											for (var i = 1; i < 12; i++) {
+												if (month == i) {
+													document.write("<option selected='selected'>" + i + "</option>");
+												} else {
+													document.write("<option>" + i + "</option>");
+												}
+											}
+										</script>
+									</select>
+									月
+								</div>
+								<div onclick="Canlder.pushBtm('')" style="width:20%;">今天</div>
+								<div onclick="Canlder.pushBtm('MD')" style="width:15%;">下月</div>
+							</th>
+						</tr>
+					</thead>
+					<TBODY>
+						<tr class="sunday">
+							<td class="weekend_ms">日</td>
+							<td>一</td>
+							<td>二</td>
+							<td>三 </td>
+							<td>四</td>
+							<td>五</td>
+							<td class="weekend_ms">六</td>
+						</tr>
+
+						<script language="JavaScript">
+							var gNum;
+							for (i = 0; i < 6; i++) {
+								document.write('<tr align="middle">');
+								for (j = 0; j < 7; j++) {
+									gNum = i * 7 + j;
+									document.write('<td align="center" id="SD' + gNum + '" onclick="Canlder.checkDay(' + gNum + ')"  onMouseOver="Canlder.mOvr(' + gNum + ')" onMouseOut="Canlder.mOut(' + gNum + ')" width="57" style="background: none transparent scroll repeat 0% 0%; cursor : default; color: #ff5f08"')
+									if (j == 0) {
+										document.write(' class="aorange"');
+									} else if (j == 6) {
+										if (i % 2 == 1) {
+											document.write(' class="aorange"');
+										} else {
+											document.write(' class="agreen"');
+										}
+									} else {
+										document.write(' class="one"');
+									}
+									document.write('></td>');
+								}
+								document.write('</tr>')
+							}
+						</script>
+					</tbody>
+				</table>
+			</form>
+			<!--嵌入万年历代码 结束-->
+		</div>
+		<!--日历内容区 结束-->
+	</body>
+
+</html>
