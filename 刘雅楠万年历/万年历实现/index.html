@@ -1,0 +1,370 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/calender.css"/>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="css/another.css"/>
+    <![endif]-->
+    <!--[if gte IE 9]>
+    <link rel="stylesheet" href="css/calender.css"/>
+    <![endif]-->
+    <!--[if !IE]>
+    <link rel="stylesheet" href="css/calender.css"/>
+    <![endif]-->
+ </head>
+ <body onload="init()">
+ <div class="container">
+     <div class="calender_title col-xs-12">刘雅楠万年历</div>
+     <div class="calender_box col-xs-12">
+         <div class="row">
+             <div class="calender_box_left col-lg-9 col-md-9  col-sm-9 col-xs-12">
+                 <div class="cal_box_select">
+                     <div class="cal_box_selectYear fl">
+                         <a class="prev" onclick="yearOrMonthChange('PY')"> &lt; </a>
+                         <a class="next" onclick="yearOrMonthChange('NY')"> &gt;</a>
+
+                         <div class="year_div"><select id="solar_year" onchange="changeCld()"></select></div>
+                     </div>
+                     <div class="cal_box_selectMonth fl">
+                         <a class="prev" onclick="yearOrMonthChange('PM')"> &lt; </a>
+                         <a class="next" onclick="yearOrMonthChange('NM')"> &gt;</a>
+
+                         <div><select id="solar_month" onchange="changeCld()"></select></div>
+                     </div>
+
+                     <div class="fl">
+                         <a class="back_today" onclick="backToDay()">返回今天</a>
+                     </div>
+                 </div>
+
+                 <div class="calender_box_content">
+                     <table class="table" id="table">
+                         <thead>
+                         <tr>
+                             <th class="table_weekend">
+                                 日
+                             </th>
+                             <th>
+                                 一
+                             </th>
+
+                             <th>
+                                 二
+                             </th>
+                             <th>
+                                 三
+                             </th>
+                             <th>
+                                 四
+                             </th>
+                             <th>
+                                 五
+                             </th>
+                             <th class="table_weekend">
+                                 六
+                             </th>
+                         </tr>
+                         </thead>
+                         <tbody>
+                         <tr>
+                             <td style="width:48px;">
+                                 <a>
+                                     <span class="solar_day" id="solar_day0" onclick="showClickStems(0)"></span>
+                                     <span class="lunar_day" id="lunar_day0"></span>
+                                 </a>
+
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day1"></span>
+                                     <span class="lunar_day" id="lunar_day1"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day2"></span>
+                                     <span class="lunar_day" id="lunar_day2"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day3"></span>
+                                     <span class="lunar_day" id="lunar_day3"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day4"></span>
+                                     <span class="lunar_day" id="lunar_day4"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day5"></span>
+                                     <span class="lunar_day" id="lunar_day5"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day6"></span>
+                                     <span class="lunar_day" id="lunar_day6"></span>
+                                 </a>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day7"></span>
+                                     <span class="lunar_day" id="lunar_day7"></span>
+                                 </a>
+
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day8"></span>
+                                     <span class="lunar_day" id="lunar_day8"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day9"></span>
+                                     <span class="lunar_day" id="lunar_day9"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day10"></span>
+                                     <span class="lunar_day" id="lunar_day10"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day11"></span>
+                                     <span class="lunar_day" id="lunar_day11"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day12"></span>
+                                     <span class="lunar_day" id="lunar_day12"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day13"></span>
+                                     <span class="lunar_day" id="lunar_day13"></span>
+                                 </a>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day14"></span>
+                                     <span class="lunar_day" id="lunar_day14"></span>
+                                 </a>
+
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day15"></span>
+                                     <span class="lunar_day" id="lunar_day15"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day16"></span>
+                                     <span class="lunar_day" id="lunar_day16"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day17"></span>
+                                     <span class="lunar_day" id="lunar_day17"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day18"></span>
+                                     <span class="lunar_day" id="lunar_day18"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day19"></span>
+                                     <span class="lunar_day" id="lunar_day19"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day20"></span>
+                                     <span class="lunar_day" id="lunar_day20"></span>
+                                 </a>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day21"></span>
+                                     <span class="lunar_day" id="lunar_day21"></span>
+                                 </a>
+
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day22"></span>
+                                     <span class="lunar_day" id="lunar_day22"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day23"></span>
+                                     <span class="lunar_day" id="lunar_day23"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day24"></span>
+                                     <span class="lunar_day" id="lunar_day24"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day25"></span>
+                                     <span class="lunar_day" id="lunar_day25"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day26"></span>
+                                     <span class="lunar_day" id="lunar_day26"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day27"></span>
+                                     <span class="lunar_day" id="lunar_day27"></span>
+                                 </a>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day28"></span>
+                                     <span class="lunar_day" id="lunar_day28"></span>
+                                 </a>
+
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day29"></span>
+                                     <span class="lunar_day" id="lunar_day29"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day30"></span>
+                                     <span class="lunar_day" id="lunar_day30"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day31"></span>
+                                     <span class="lunar_day" id="lunar_day31"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day32"></span>
+                                     <span class="lunar_day" id="lunar_day32"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day33"></span>
+                                     <span class="lunar_day" id="lunar_day33"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day34"></span>
+                                     <span class="lunar_day" id="lunar_day34"></span>
+                                 </a>
+                             </td>
+                         </tr>
+                         <tr class="lastTr" id="lastTr">
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day35"></span>
+                                     <span class="lunar_day" id="lunar_day35"></span>
+                                 </a>
+
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day36"></span>
+                                     <span class="lunar_day" id="lunar_day36"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day37"></span>
+                                     <span class="lunar_day" id="lunar_day37"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day38"></span>
+                                     <span class="lunar_day" id="lunar_day38"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day39"></span>
+                                     <span class="lunar_day" id="lunar_day39"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day40"></span>
+                                     <span class="lunar_day" id="lunar_day40"></span>
+                                 </a>
+                             </td>
+                             <td>
+                                 <a>
+                                     <span class="solar_day" id="solar_day41"></span>
+                                     <span class="lunar_day" id="lunar_day41"></span>
+                                 </a>
+                             </td>
+                         </tr>
+                         </tbody>
+                     </table>
+                 </div>
+             </div>
+             <div class="calender_box_right  col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                 <div class="row">
+                     <div class="calender_box_right_date">
+                         <p id="sDate"></p>
+                         <p id="sDay"></p>
+                         <p id="lDate"></p>
+                         <p>
+                             <span class="stemsYear" id="stemsYear"></span>
+                             <span class="animal" id="animal"></span>
+                         </p>
+                         <p>
+                             <span class="stemMonth" id="stemMonth"></span>
+                             <span class="stemDay" id="stemDay"></span>
+                         </p>
+                         <p id="sTerm"></p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ <script type="text/javascript" src="js/calender.js"></script>
+
+ </body>
+ </html>

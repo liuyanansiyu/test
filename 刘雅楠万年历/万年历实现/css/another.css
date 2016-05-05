@@ -1,0 +1,163 @@
+body {
+    color: #333;
+    background: #fff;
+    margin: 0;
+    position: relative;
+    font-family: "Microsoft YaHei";
+}
+
+.fl {
+    float: left;
+}
+
+a {
+    color: #333;
+}
+
+a:focus, a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cal_box_selectYear, .cal_box_selectMonth {
+    position: relative;
+    padding: 0 22px;
+    margin-right: 10px;
+}
+
+.back_today {
+    display: inline-block;
+    padding: 0 1em;
+    margin: 0;
+    height: 1.9em;
+    line-height: 1.9em;
+    font-size: 0.9em;
+    filter: chroma(color=#000000);
+    border: 1px solid #d8d8d8;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #f9f9f9;
+    overflow: hidden;
+    outline: 0;
+}
+
+.container {
+    width: 700px;
+}
+
+.calender_box_right {
+    color: #fff;
+    text-align: center;
+    min-height: 400px;
+    /*        background-color: #46AFE4;*/
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#16B5FB, endColorstr=#74D9E3, grandientType=0);
+    background: #16B5FB;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#16B5FB), to(#74D9E3));
+    background: -moz-linear-gradient(top, #16B5FB, #74D9E3);
+}
+
+.calender_box_left {
+    padding: 20px;
+}
+
+.calender_box {
+    border: 2px solid #46AFE4;
+}
+
+.calender_title {
+    font-size: 2em;
+    text-align: center;
+    margin: 20px 0;
+}
+
+#sDay {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto;
+    line-height: 76px;
+    font-size: 52px;
+    background: #fb0;
+    border-radius: 3px;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, .1), -1px 2px 5px rgba(0, 0, 0, .1);
+}
+
+.cal_box_select {
+    height: 36px;
+    border-bottom: 1px solid #69BCF3;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 1.5em;
+    border: 1px solid #999;
+    border-bottom-color: #d8d8d8;
+    background: #fafafa;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    text-decoration: none;
+    color: #7a7a7a;
+    font-weight: 700;
+    font-family: Simsun, Simhei, sans-serif;
+    z-index: 205;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+#solar_year, #solar_month {
+    height: 1.7em;
+    line-height: 1.7em;
+}
+
+.solar_day {
+    height: 1.5em;
+    font-size: 1.1em;
+    color: #000;
+}
+
+.solar_day, .lunar_day {
+    display: block;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table > thead > tr > th {
+    text-align: center;
+}
+
+.table > tbody > tr > td {
+    padding: 0;
+    border-bottom: 1px solid #DADADA;
+}
+
+.table > tbody > tr > td a {
+    padding: 0.42em 0.21px;
+    display: block;
+    border-right: 1px solid #fff;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.table_weekend {
+    color: red;
+}
+
+.col-lg-3, .col-md-3, .col-sm-3 {
+    padding-right: 0
+}
+
+.calender_box_right_date {
+    padding: 20px 0;
+}
