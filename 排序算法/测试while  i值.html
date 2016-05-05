@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script >
+    function compute(){
+        var i=0;
+        while(i<5){
+            console.log(i);//0 1 2 3 4
+            i++;
+        }
+        alert(i);//5
+    }
+    compute();
+    function compute1(){
+        var i=0;
+        while(i++<5){ //取i原值跟5比较 然后i再加1
+            console.log(i);//1 2 3 4 5
+        }
+        alert(i);//5
+    }
+    compute1();
+
+    function compute3(){
+        var i=0;
+        while(++i<5){ //取i加1后的值 跟5比较
+            console.log(i);//1 2 3 4
+        }
+        alert(i);//5
+    }
+    compute3();
+</script>
+
+</body>
+</html>

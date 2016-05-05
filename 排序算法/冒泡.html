@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+
+ function BubbleSort(arr){
+     var n=arr.length;
+     var temp;
+     for(var i=0;i<n-1;i++)
+     {
+         for(var j=0;j<n-i-1;j++){
+             if(arr[j]>arr[j+1]){
+               temp=arr[j];
+                 arr[j]=arr[j+1];
+                 arr[j+1]=temp;
+             }
+         }
+     }
+ }
+  var elements = [3, 1, 5, 7, 2, 4, 9, 6, 10, 8];
+ console.log(elements);
+    BubbleSort(elements);
+    console.log(elements);
+
+
+
+    function DescSort(arr){
+        var n=arr.length;
+        var temp;
+        var flag=false;
+        for(var i=0;i<n-1;i++) {
+            for (var j = n - 1; j > i; j--) {
+                if(arr[j-1]>arr[j]){
+                    temp=arr[j-1];
+                    arr[j-1]=arr[j];
+                    arr[j]=temp;
+                    flag=true;
+                }
+
+            }
+            if(flag==false)
+            return;
+        }
+    }
+ var elements = [3, 1, 5, 7, 2, 4, 9, 6, 10, 8];
+ console.log(elements);
+ DescSort(elements);
+ console.log(elements);//[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
+
+
+</script>
+</body>
+</html>

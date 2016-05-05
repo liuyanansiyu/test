@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+  <script>
+  /*    不稳定的排序
+      时间复杂度:最好 O（nlgn） 以2为底  最差 O（n2）n的平方*/
+      function  QuickSort(arr,low,high){
+          if(low<high){
+              var pivotpos=Partition(arr,low,high);
+              QuickSort(arr,low,pivotpos-1);
+              QuickSort(arr,pivotpos+1,high);
+              return arr;
+          }
+      }
+
+      function Partition(arr,low,high){
+          var pivot=arr[low];
+          while(low<high){
+              while(low<high&&arr[high]>=pivot)
+               --high;
+              arr[low]=arr[high];
+              while(low<high&&arr[low]<=pivot)
+              ++low;
+              arr[high]=arr[low];
+          }
+          arr[low]=pivot;
+          return low;
+      }
+      var arr=[4,7,2,1,8,3];
+   console.log(QuickSort(arr,0,arr.length-1))  ; //1 2 3 4 7 8
+
+  </script>
+</body>
+</html>

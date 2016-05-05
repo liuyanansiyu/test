@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+ <script >
+     function ShellSort(a){
+         var temp;
+         var n= a.length;
+         for(var dk=Math.floor(a.length/2) ;dk>=1;dk=Math.floor(dk/2)){
+             for(var i=dk;i<n;i++)
+             {
+                 if(a[i]<a[i-dk]){
+                     temp=a[i];
+                     for(var j=i-dk;temp<a[j]&&j>=0;j-=dk){
+                         a[j+dk]=a[j];
+                     }
+                     a[j+dk]=temp;
+                 }
+             }
+         }
+     return a;
+     }
+     var array=[7,6,9,3,5,14,10,1,8,4,50];
+     console.log(ShellSort(array));//[1, 3, 5, 6, 7, 9]
+
+ </script>
+
+</body>
+</html>

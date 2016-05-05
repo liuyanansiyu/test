@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+    function   QuickSort(arr,low,high){
+        if(low<high){
+            var pivotpos=PivotPos1(arr,low,high);
+            QuickSort(arr,low,pivotpos-1);
+            QuickSort(arr,pivotpos+1,high);
+            return arr;
+        }
+
+    }
+
+    function PivotPos(arr,low,high){
+        var pivot=arr[low];
+        while(low<high){
+            while(low<high&&arr[high]>=pivot)
+            --high;
+            arr[low]=arr[high];
+            while(low<high&&arr[low]<=pivot)
+            ++low;
+            arr[high]=arr[low]
+
+        }
+        arr[low]=pivot;
+        return low;
+    }
+    function PivotPos1(a,low,high){
+        var pivot=a[low];
+        while(low<high){
+            while(low<high&&a[high]>pivot) --high;
+            while(low<high&&a[low]<pivot) ++low;
+            if(low<high){
+                var temp=a[low];
+                a[low]=a[high];
+                a[high]=temp;
+                if(a[low]==pivot && a[high]==pivot)
+                   low++;
+            }
+
+        }
+        a[low]=pivot;
+        return low;
+    }
+
+
+    var a=[1,8,6,4,32,2];
+      console.log( QuickSort(a,0, a.length-1));
+
+</script>
+</body>
+</html>

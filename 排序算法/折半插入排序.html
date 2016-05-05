@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script >
+
+
+    function InsertSort(a){
+        var n=a.length;
+        var low,high,mid;
+        for (var i=2;i<n;i++) {
+            a[0]=a[i];
+             low=1;
+             high=i-1;
+            while(low<=high){
+                mid=Math.floor((low+high)/2);
+                console.log(mid);
+                if(a[mid]>a[0]){
+                    high=mid-1;
+                }
+                else{
+                    low=mid+1;
+                }
+            }
+            for(var j=i-1;j>=high+1;--j){
+                a[j+1]=a[j];
+            }
+            a[high+1]=a[0];
+        }
+        return a;
+    }
+
+    var array=[ ,14,5,10,2,6,3];
+    console.log(array);
+    console.log(InsertSort(array).slice(1,array.length));
+</script>
+
+</body>
+</html>
