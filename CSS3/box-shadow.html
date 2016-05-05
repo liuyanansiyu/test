@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <style>
+        .boxshadow{
+            width:200px;
+            height:100px;
+            box-shadow:0px 0px 55px blue;
+            -webkit-box-shadow:5px 5px 10px blue;
+            -moz-box-shadow:5px 5px 10px blue;
+            background-color:red;
+        }
+        .boxshadow1{
+            width:200px;
+            height:100px;
+            filter:progid:DXImageTransform.Microsoft.Shadow(color='red',Direction=270, Strength=10);
+        /*filter:Shadow(Color=color,Direction=direction,strength=strength)
+        color代表投影的底色，该数值是用英文字母来代替的， 例如投影底色是蓝色的话，就应该设置color=blue。
+        direction参数是用来设置投影方向的，如果该数值是0的话，就代表垂直投影，此外该数值45度为单位，它的默认值是向左的270度。
+        strength设置或检索以对象为基准的在运动方向上的向外扩散距离。*/
+            -webkit-box-shadow:-10px 0px 5px blue,
+            10px 0px 5px black ,
+            0px -10px 5px red,
+            0px 10px 5px yellow;
+            -box-shadow:5px 5px 10px blue;
+            -moz-box-shadow:5px 5px 10px blue;
+            background-color:#333;
+        }
+        .boxshadow2{
+            width:200px;
+            height:100px;
+            -ms-filter:"progid:DXImageTransform.Microsoft.Shadow(color=#CCCCCC,direction=0,strength=6) ,
+            　　　　　　  progid:DXImageTransform.Microsoft.Shadow(color=#CCCCCC,direction=90,strength=6),
+        　　　　　　　progid:DXImageTransform.Microsoft.Shadow(color=#CCCCCC,direction=180,strength=6),
+        　　　　　　　progid:DXImageTransform.Microsoft.Shadow(color=#CCCCCC,direction=270,strength=6)";
+
+            -webkit-box-shadow:-10px 0px 5px blue,
+            10px 0px 5px black ,
+            0px -10px 5px red,
+            0px 10px 5px yellow;
+            -box-shadow:5px 5px 10px blue;
+            -moz-box-shadow:5px 5px 10px blue;
+            background-color:#333;
+        }
+
+    </style>
+</head>
+<body>
+<div class="boxshadow"></div>
+<p></p>
+<div class="boxshadow1"></div>
+<p></p>
+<div class="boxshadow2"></div>
+</body>
+</html>
