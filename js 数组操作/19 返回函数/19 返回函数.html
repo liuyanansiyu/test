@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+ <script>
+     function functionFunction(str) {
+         var f=function(s){
+             return str+", "+s;
+         }
+         return f;
+     }
+    var r=   functionFunction('Hello')('world');
+    console.log(r);
+
+     function functionFunction2(str) {
+         if(typeof str == 'string' && arguments.length == 1){
+             var f = function(s){
+                 if(typeof s == 'string' && arguments.length == 1){
+                     return str + ', '+s;
+                 }
+             }
+             return f;
+         }
+     }
+     var r= functionFunction2('Hello')('world');
+     console.log(r);
+ </script>
+</body>
+</html>

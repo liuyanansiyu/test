@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+   <script>
+       function useArguments(){
+           var arr=Array.prototype.slice.call(arguments);//将arguments转化为数组
+           return eval(arr.join("+"));  //arr.join("+") 结果为1+2+3+4
+       }
+      console.log(useArguments(1,2,3,4)) ;//10
+
+
+       function useArguments2() {
+           /*
+            因为参数数量不定，可以先获取参数个数arguments.length
+            然后循环求值
+            */
+           //声明一个变量保存最终结果
+           var sum = 0;
+           //循环求值
+           for(var i = 0; i < arguments.length; i++){
+               sum += arguments[i];
+           }
+           return sum;
+       }
+       console.log(useArguments2(1,2,3,4)) ;//10
+
+       function useArguments3() {
+           var sum= Array.prototype.reduce.call(arguments, function (a,b) {
+              return a+b;
+           });
+           return sum;
+       }
+       console.log(useArguments3(1,2,3,4)) ;//10
+
+
+   </script>
+</body>
+</html>

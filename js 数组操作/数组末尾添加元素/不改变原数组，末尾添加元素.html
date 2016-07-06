@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script >
+    function append(arr, item) {
+        var res=[];
+        for(var i=0;i<arr.length;i++){
+            res.push(arr[i]);//push方法会直接修改原数组
+        }
+        res.push(item);
+        console.log("arr",arr);// arr1,2,3,4
+        return res;
+    }
+    console.log("方法一：不改变原数组，末尾添加元素后的新数组为:"+append([1, 2, 3, 4],  10));//方法一：不改变原数组，末尾添加元素后的新数组为:1,2,3,4,10
+
+
+    function append1(arr, item) {
+
+        return arr.concat(item);//该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。
+    }
+    console.log("方法二：不改变原数组，末尾添加元素后的新数组为:"+append1([1, 2, 3, 4],  10));//方法二：不改变原数组，末尾添加元素后的新数组为:1,2,3,4,10
+
+    function append2(arr,item){
+        var r;
+        r= arr.slice(0);//该方法并不会修改数组，而是返回一个子数组。slice(start,end) 省略end，默认从start到数组结尾所有元素 赋值数组到r;
+        r.push(item);
+        return r;
+    }
+    console.log("方法三：不改变原数组，末尾添加元素后的新数组为:"+append2([1, 2, 3, 4],  10));//方法三：不改变原数组，末尾添加元素后的新数组为:1,
+</script>
+</body>
+</html>

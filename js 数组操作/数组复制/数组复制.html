@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script >
+    var arr=[3,4,5];
+    var arr2=arr;
+    console.log(arr2);//3,4,5
+    arr2[0]=123;  //通过arr2修改数组，arr数组也发生变化
+    console.log(arr);//123,4,5
+
+/*通过concat方法复制*/
+    var a=[3,4,5];
+    var b=[].concat(a);
+    console.log(b);//3,4,5
+    b[0]=123;
+    console.log("concat方法复制 ",a);//3,4,5  a数组没有改变
+
+
+/*    通过slice方法复制*/
+    var a1=[3,4,5];
+    var b1=a1.slice(0);
+    b1[0]=123;
+    console.log(b1);//123,4,5 数组b1改变
+    console.log("slice方法复制 ",a1); //a1数组没有改变
+
+    var c=[3,4,5];
+    var d=[];
+    for(var i=0;i< c.length;i++){
+        d.push(c[i]);
+    }
+    d[3]=9; //直接对数组元素复制
+    d[5]=10;//数组d下标5的元素赋值，下标4的元素为undefined;
+    console.log("d ",d);//3,4,5,9,,10
+    console.log("c ",c);//3,4,5
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <script>
+      function makeClosures(arr, fn) {
+          var result=[];
+          for(var i=0;i<arr.length;i++){
+              (function(v){
+                  result[v]=function(){
+                      return fn.call(null,arr[v]); //或return fn(arr[v]);
+                  }
+                  alert(result[v]);
+              })(i);
+          }
+          return result;
+      }
+      var arr = [1, 2, 3];
+      var square = function (x) { return x * x; };
+      var funcs = makeClosures(arr, square);
+      alert(funcs[1]);
+      console.log(funcs[1]()) ;
+
+      function makeClosures2(arr, fn) {
+          var result=[];
+          arr.forEach(function(e){
+              result.push(function(num){
+                  return function(){return fn(num);}
+              }(e));
+          })
+
+          return result;
+      }
+      var arr = [1, 2, 3];
+      var square = function (x) { return x * x; };
+      var funcs = makeClosures2(arr, square);
+      console.log(funcs[1]()) ;
+  </script>
+</body>
+</html>

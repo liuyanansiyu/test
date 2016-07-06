@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+    function prepend(arr, item) {
+        var r=[];
+        r.push(item);
+        return r.concat(arr);
+    }
+    console.log("方法一：不改变原数组，在头部添加元素，返回新数组为：",prepend([1, 2, 3, 4], 10));//10,1,2,3,4
+
+
+    function prepend(arr, item) {
+        if(item instanceof Array === false){
+            item = [item];
+        }
+        var result = item.concat(arr);
+        return result;
+    }
+    console.log("方法二：不改变原数组，在头部添加元素，返回新数组为：",prepend([1, 2, 3, 4], 10));//10,1,2,3,4
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script >
+    function truncate(arr) {
+        var res=arr.slice(0);
+        res.pop();
+        return res;
+    }
+
+    console.log("不改变原数组，删除最后一个元素后的新数组为：", truncate([1, 2, 3, 4]));//1 2 3
+
+
+    function truncate2(arr) {
+        return  arr.slice(0,arr.length-1);
+    }
+    console.log("不改变原数组，删除最后一个元素后的新数组为：", truncate2([1, 2, 3, 4]));//1 2 3
+    function truncate3(arr) {
+        var a=[];
+        for(var i=0;i<arr.length-1;i++){
+            a.push(arr[i]);
+        }
+        return a;
+    }
+    console.log("方法三：不改变原数组，删除最后一个元素后的新数组为：", truncate3([1, 2, 3, 4]));//1 2 3
+</script>
+</body>
+</html>

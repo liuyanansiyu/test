@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script >
+    function mySort() {
+        var tags = new Array();//使用数组作为参数存储容器
+       for (var i=0;i<arguments.length;i++){
+           tags.push(arguments[i]);
+       }
+        tags.sort(function(a,b){
+            return a-b;
+        })
+        return tags;//返回已经排序的数组
+    }
+
+    var result = mySort(50,11,16,32,24,99,57,100);//传入参数个数不确定
+    console.log(result);//显示结果11,16,24,32,50,57,99,100
+
+</script>
+</body>
+</html>

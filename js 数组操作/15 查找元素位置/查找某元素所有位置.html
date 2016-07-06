@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    //方法一
+    function findAllOccurrences(arr, target) {
+        var result=[];
+        arr.forEach(function(item,index){
+            if(target==item){
+                result.push(index);
+            }
+        })
+        return result;
+    }
+    var result= findAllOccurrences('abcdefabc'.split(''), 'a').sort();
+    console.log(result);//[0,6]
+
+  //方法二
+    function findAllOccurrences2(arr, target) {
+        var result=[];
+        for(var i in arr){
+            if(arr[i]==target){
+                result.push(i);
+            }
+        }
+        return result;
+    }
+    var result= findAllOccurrences2('abcdefabc'.split(''), 'a').sort();
+    console.log(result);//[0,6]
+</script>
+</body>
+</html>

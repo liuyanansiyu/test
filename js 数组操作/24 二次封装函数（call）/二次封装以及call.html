@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+   <script>
+       function partialUsingArguments(fn) {
+           var args=[].slice.call(arguments,1);
+           var result=function(){
+               return fn.apply(null,args.concat([].slice.call(arguments)));
+           }
+           return result;
+       }
+       var a = 1;
+       var b = 2;
+       var c = 3;
+       var d = 4;
+       var test = function (first, second, third, forth) {
+           return first + second + third + forth;
+       };
+       console.log(partialUsingArguments(test, a, b));
+       console.log(partialUsingArguments(test, a, b)(c, d));
+
+       function partialUsingArguments2(fn) {
+           var args0 =Array.prototype.slice.call(arguments, 1);
+           var result = function () {
+               var args1 = Array.prototype.slice.call(arguments);
+               var args = (arguments.length > 0) ? (args0.concat(args1)) : args0;
+               return fn.apply(this, args);
+           }
+           return result;
+       }
+       console.log(partialUsingArguments2(test, a, b));
+       console.log(partialUsingArguments2(test, a, b)(c, d));
+
+   </script>
+</body>
+</html>

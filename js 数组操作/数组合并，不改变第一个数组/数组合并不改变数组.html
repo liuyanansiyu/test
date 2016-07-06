@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+/**********    修改了第一个数组，合并数组 ******************/
+    function concat(arr1, arr2) {
+        var temp=arr1;
+        for(var i in arr2){
+            temp.push(arr2[i]);
+        }
+        console.log(arr1);//1,2,3,4,6,8  temp和arr1会同时改变的
+        return temp;
+    }
+   console.log("合并后的数组为：",concat([1,2,3,4],[6,8]));//合并后的数组为：1,2,3,4,6,8
+
+
+/**********不改变第一个数组，合并数组方法如下：****************/
+    function concat2(arr1, arr2) {
+        var r=[];
+    /*   alert(typeof(r));//object
+       alert(r instanceof  Array);//true;*/
+/*       var t=new Array();
+       alert(typeof(t)); //object*/
+        for (var i in arr1){
+            r[i]=arr1[i];
+        }
+        for(var i in arr2){
+            r.push(arr2[i]);
+        }
+        console.log("arr1 ",arr1);//arr1 1,2,3,4
+        return r;
+    }
+    console.log("不改变arr1,合并后的数组为：",concat2([1,2,3,4],[6,8]));// 不改变arr1,合并后的数组为：1,2,3,4,6,8
+
+
+   function concat3(arr1,arr2){
+         return arr1.concat(arr2);
+     }
+    console.log("不改变arr1,合并后的数组为：",concat3([1,2,3,4],[6,8]));// 不改变arr1,合并后的数组为：1,2,3,4,6,8
+</script>
+</body>
+</html>

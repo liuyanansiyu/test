@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+    function curtail(arr){
+        return arr.slice(1);
+    }
+   console.log("不改变原数组，删除第一个数组以后的新数组为：", curtail([1, 2, 3, 4])); //2,3,4
+
+    function curtail2(arr) {
+        var a=arr.slice(0);
+        a.shift();
+        return a;
+    }
+    console.log("不改变原数组，删除第一个数组以后的新数组为：", curtail2([1, 2, 3, 4])); //2,3,4
+</script>
+</body>
+</html>

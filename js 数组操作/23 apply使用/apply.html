@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+       /** 题目描述
+
+        实现函数 callIt，调用之后满足如下条件
+        1、返回的结果为调用 fn 之后的结果
+        2、fn 的调用参数为 callIt 的第一个参数之后的全部参数   **/
+        function callIt(fn) {
+            //将arguments转化为数组后，截取第一个元素之后的所有元素
+            var args = Array.prototype.slice.call(arguments,1);
+            return fn.apply(this,args);
+
+       //  或者这句即可实现  return fn.apply(this,[].slice.call(arguments,1));
+        }
+       var a = 1;
+       var b = 2;
+       var test = function (first, second) {
+           return first === a && second === b;
+       };
+      console.log( callIt(test, a, b)); //true
+    </script>
+</body>
+</html>

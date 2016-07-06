@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    function count(start, end) {
+        if(start <= end){
+            console.log(start);
+            start++;
+           var st = setTimeout(function(){count(start, end)}, 100);
+        }
+        return {
+            cancel: function(){clearTimeout(st);}
+        }
+    }
+    count(10,10);//输出1-10
+
+
+    function count2(start, end) {
+        console.log(start++);
+        var timer=setInterval(function(){
+            if(start<=end){
+                console.log(start++);
+            }else{
+                clearInterval(timer);
+            }
+        },100);
+        //返回一个对象
+        return {
+            cancel : function(){
+                clearInterval(timer);
+            }
+        };
+    }
+   // count2(20,10);
+</script>
+
+</body>
+</html>

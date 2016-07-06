@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script >
+    function insert(arr, item, index) {
+        var res=[];
+        for(var i=0;i<arr.length;i++){
+            res.push(arr[i]);
+        }
+        res.splice(index,0,item);
+        return res;
+    }
+   console.log("不改变原数组，添加元素后返回的新数组为：",insert([1, 2, 3, 4], 'z', 2));//不改变原数组，添加元素后返回的新数组为：1,2,z,3,4
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+   <script>
+       function argsAsArray(fn, arr) {
+           return fn.apply(this,arr);
+       }
+    var result=argsAsArray(function (greeting, name, punctuation) {return greeting + ', ' + name + (punctuation || '!');}, ['Hello', 'Ellie', '!'])
+   console.log(result) ;
+   </script>
+</body>
+</html>

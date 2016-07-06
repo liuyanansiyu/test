@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <script>
+      function curryIt(fn){
+          //获取fn参数个数
+          var n=fn.length;
+          var args=[];
+          return function(arg){
+              args.push(arg);
+              if(args.length<n){
+                  return arguments.callee;
+              }else return fn.apply(null,args);
+          }
+      }
+      var fn = function (a, b, c) {
+          return a + b + c
+      };
+     console.log(curryIt(fn)(1)(2)(3)) ;
+
+      function curryIt2(fn){
+          //获取fn参数个数
+          var n=fn.length;
+          var args=[];
+          var result=function(arg){
+              args.push(arg);
+              if(args.length<n){
+                  return result;
+              }else return fn.apply(null,args);
+          }
+          return result;
+      }
+      console.log(curryIt2(fn)(1)(2)(3)) ;//6
+  </script>
+</body>
+</html>

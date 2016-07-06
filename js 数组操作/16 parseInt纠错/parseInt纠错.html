@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    function parse2Int(num){
+        var numArr="";
+        for(var i= 0,len=num.length;i<len;i++){
+            if(num[i]>=0 && num[i]<=9){
+                numArr +=num[i];
+            }else{
+                break;
+            }
+        }
+        return numArr;
+    }
+    console.log(parse2Int('12')) ; //12
+    console.log(parse2Int('12px')); //12
+    console.log(parse2Int('0x12'));//0
+    console.log(parse2Int('023'));
+</script>
+</body>
+</html>

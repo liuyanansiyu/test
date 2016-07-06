@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+ /*   reduce(callbackfn[,inittalValue]) 方法 IE9及以上执行
+     对数组中所有元素调用指定的回调函数。并返回最后一次调用回调函数的累积结果。此返回值作为下一次调用回调函数的参数值（previousValue）提供
+ * function callbackfn(previousValue,currentValue,currentIndex,array1)
+ *   previousValue:通过上一次调用回调函数获得的值。
+ *   如果向 reduce 方法提供 initialValue，则在首次调用函数时，previousValue 为 initialValue。
+ *   currentValue:当前数组元素的值。
+ *     currentIndex:当前数组元素的索引
+    */
+    function addDigitValue(previousValue,currentDigit,currentIndex,array){
+        var exponent=array.length-1-currentIndex;
+        var digitValue=currentDigit*Math.pow(10,exponent);
+        return previousValue+digitValue;
+    }
+    var digits=[4,1,2,5];
+    var result=digits.reduce(addDigitValue,0); //previousValue 初值为 0 ,则currentDigit为数组第一个元素4
+    console.log(result);//4125
+</script>
+</body>
+</html>
