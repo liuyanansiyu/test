@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<br>
+<head>
+    <title></title>
+</head>
+
+ <script>
+     var new_window=null;
+     function sure_open(url){
+         if(confirm("确认打开新页面？")){
+             open_win(url);
+         }else{
+             new_window.close();
+         }
+     }
+     function open_win(url){
+         new_window=window.open();
+         new_window.location.href=url;
+         new_window.location.target="_blank";
+     }
+     function win_open(){
+         var width=500; //弹出窗口的宽度;
+         var height=500; //弹出窗口的高度;
+         alert(window.screen.availHeight);
+         alert(window.screen.availWidth);
+         var top = (window.screen.availHeight-height)/2; //窗口的垂直位置;
+         var left = (window.screen.availWidth-width)/2; //窗口的水平位置;
+         window.open("test.html","_blank",'height='+height+',width='+width+',top='+top+',left='+left+' ');
+     }
+     function openwin(url) {
+         var a = document.createElement("a");
+         a.setAttribute("href", url);
+         a.setAttribute("target", "_blank");
+         document.body.appendChild(a);
+         a.click();
+     }
+     function open_window(){
+         window.open("test.html","_blank");
+     }
+ </script>
+ <button type="button" onclick="open_window()" >打开新窗口</button>
+ <button type="button" onclick="open_win('test.html')" >打开新窗口1</button>
+ <button type="button" onclick="sure_open('test.html')" >打开新窗口2</button>
+ <a href="test.html" target="_blank">链接打开新窗口3</a>
+ <button type="button" onclick="win_open()" >打开新窗口4</button>
+ <input type="button" id="btn" value="新窗口" onclick="openwin('http://baidu.com')" />
+</body>
+</html>

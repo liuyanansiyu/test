@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+ <script>
+     var re=null,i;
+     for(i=0;i<10;i++){
+         re=/cat/g;
+        console.log( re.test("catastrophe"));
+     }
+     for(i=0;i<10;i++){
+         re=new RegExp("cat","g");
+         console.log( re.test("catastrophe"));
+     }
+
+ </script>
+
+
+</body>
+</html>

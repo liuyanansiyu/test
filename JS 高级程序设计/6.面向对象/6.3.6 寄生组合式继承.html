@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+   <script>
+       function inheritPrototype(subType,superType){
+           var prototype=object(superType.prototype); //创建对象
+           prototype.constructor=subType; //增强对象
+           subType.prototype=prototype; //指定对象
+       }
+
+       function SuperType(name){
+           this.name=name;
+           this.colors=["red","blue","gray"];
+       }
+       SuperType.prototype.sayName=function(){
+           alert(this.name);
+       }
+
+       function SubType(name,age){
+           SuperType.call(this,name); //继承属性
+           this.age=age;
+       }
+
+       //继承方法
+
+
+
+       SubType.prototype.sayAge=function(){
+           alert(this.age);
+       }
+
+
+   </script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" id="mybtn" value="跨浏览器的事件对象属性和方法测试" />
+<a id="aLink" href="www.baidu.com">取消默认行为测试</a>
+
+<script>
+    var EventUtil={
+      addHandler:function(ele,type,handler){
+          if( ele.addEventListener){
+              ele.addEventListener(type, handler, false ); //默认事件是冒泡
+          }
+          else if(ele.attachEvent){
+              ele.attachEvent("on"+type, handler);
+          }
+          else{
+              ele["on"+type]=handler;
+          }
+      },
+        getEvent:function(event) {
+            return event?event:window.event;
+        },
+        getTarget:function(event){
+            return event.target || event.srcElement;
+        },
+        preventDefault:function(event) {
+            if(event.preventDefault){
+                event.preventDefault();
+            }else{
+                event.returnValue=false;
+            }
+        },
+        removeHandler:function(ele,type,handler) {
+            if (ele.removeEventListener) {
+                ele.removeEventListener(type, handler, false); //默认事件是冒泡
+            }
+            else if (ele.detachEvent) {
+                ele.detachEvent("on" + type, handler);
+            }
+            else {
+                ele["on" + type] = null;
+            }
+        },
+        stopPropagation: function (event) {
+            if(event.stopPropagation){
+                event.stopPropagation();
+            }else{
+                event.cancelBubble=true;
+            }
+        }
+    }
+  /** Event对象  **/
+    var btn=document.getElementById("mybtn");
+    var link=document.getElementById("aLink");
+    btn.onclick= function (event) {
+        event=EventUtil.getEvent(event);
+        console.log(event); //IE8 -- [object Event]  IE9-- [object MouseEvent] Chrome--MouseEvent
+    };
+    /** 阻止a 默认的href 行为 */
+    link.onclick= function (event) {
+        var event=EventUtil.getEvent(event);
+        EventUtil.preventDefault(event);
+    };
+   /** 阻止向上冒泡从而触发 BODY注册的事件处理程序  */
+    btn.onclick= function (event) {
+        alert("button Clicked");
+        event = EventUtil.getEvent(event);
+        EventUtil.stopPropagation(event);
+    };
+    // 以下不执行
+    document.body.onclick= function (event) {
+        alert("Body Clicked");
+    };
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<img src="yingyezhizhao.jpg" width="30px" height="100px" />
+<img src="yingyezhizhao.jpg" width="33px" height="30px"/>
+<div id="div" style="width:100px;height:100px;background-color: red;"></div>
+<script>
+
+    var EventUtil={
+    addHandler:function(ele,type,handler){
+        if( ele.addEventListener){
+            ele.addEventListener(type, handler, false ); //默认事件是冒泡
+        }
+        else if(ele.attachEvent){
+            ele.attachEvent("on"+type, handler);
+        }
+        else{
+            ele["on"+type]=handler;
+        }
+    },
+    getEvent:function(event) {
+        return event?event:window.event;
+    },
+    getTarget:function(event){
+        return event.target || event.srcElement;
+    },
+    preventDefault:function(event) {
+        if(event.preventDefault){
+            event.preventDefault();
+        }else{
+            event.returnValue=false;
+        }
+    },
+    removeHandler:function(ele,type,handler) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, handler, false); //默认事件是冒泡
+        }
+        else if (ele.detachEvent) {
+            ele.detachEvent("on" + type, handler);
+        }
+        else {
+            ele["on" + type] = null;
+        }
+    },
+    stopPropagation: function (event) {
+        if(event.stopPropagation){
+            event.stopPropagation();
+        }else{
+            event.cancelBubble=true;
+        }
+    },
+        getButton : function(event){
+            if(document.implementation.hasFeature("MouseEvents","2.0")){
+                return event.button;
+            }else{
+                switch(event.button){
+                    case 0:
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                        return 0;
+                    case 2:
+                        alert("按下右键");
+                        return 2;
+                    case 6:
+                            alert("按下中间键和右键");
+                        return 2;
+                    case 4:
+                        return 1;
+                }
+            }
+        }
+    }
+
+    EventUtil.addHandler(window,"load",function(){
+      var image=document.createElement("img");
+        EventUtil.addHandler(image,"load", function (event) {
+            event=EventUtil.getEvent(event);
+            alert(EventUtil.getTarget(event).src);
+        });
+        document.body.appendChild(image);
+        image.src="yingyezhizhao.jpg";
+    })
+
+    EventUtil.addHandler(window,"resize", function (event) {
+                alert("Resized");
+              alert(event.target);
+            }
+    )
+
+    //鼠标按下
+    var div=document.getElementById("div");
+    EventUtil.addHandler(div,"mousedown",function(event){
+        var event=EventUtil.getEvent(event);
+        alert(EventUtil.getButton(event));
+    })
+
+    //鼠标滚轮事件
+    EventUtil.addHandler(document,"mousewheel",function(event){
+        var event=EventUtil.getEvent(event);
+        alert(event.wheelDelta);
+    })
+</script>
+
+</body>
+</html>

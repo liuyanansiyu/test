@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+    var client=function(){
+        var engine={
+            //呈现引擎
+            ie:0,
+            gecko:0,
+            webkit:0,
+            khtml:0,
+            opera:0,
+
+            //具体的版本号
+            ver:null
+        };
+        return {
+            engine :engine
+        };
+    }();
+    var ua=navigator.userAgent;
+    console.log(ua);
+    var engine = client;
+    if(window.opera){
+        engine.ver=window.opera.version();
+        engine.opera=parseFloat(engine.ver);
+        alert("opera");
+    } else if(/AppleWebkit\/(\S+)/.test(ua)){
+       engine.ver=RegExp['$1'];
+       engine.webkit=parseFloat(engine.ver);
+    }else if(/KHTML\/(\S+)/.test(ua)||/Konqueror\/([^;]+)/.test(ua)){
+        engine.ver=RegExp['$1'];
+        engine.khtml=parseFloat(engine.ver);
+    }else if(/rv:([^\)]+)\) Gecko\/d{8}/.test(ua)){
+        alert("firefox Gecko")
+        engine.ver=RegExp['$1'];
+        engine.gecko=parseFloat(engine.ver);
+    }else if(/MSIE ([^;]+)/.test(ua)){
+       engine.ver=RegExp['$1'];
+       engine.ie=parseFloat(engine.ver);
+    }
+    console.log(engine.ver)
+
+</script>
+</body>
+</html>

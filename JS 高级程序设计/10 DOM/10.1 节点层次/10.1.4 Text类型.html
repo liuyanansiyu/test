@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <style>
+        .message{
+            background: #e2ffeb;
+            width:500px;
+            height:50px;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div> </div>
+<div> hello world</div>
+<script>
+
+    /**访问文本节点**/
+    var firstDiv = document.getElementsByTagName('div')[0];
+    alert(firstDiv);//object HTMLDivElement
+
+    var ftextNode=firstDiv.firstChild;
+    alert(ftextNode);//null
+
+    var secondDiv =document.getElementsByTagName('div')[1];
+    alert(secondDiv);
+    var stextNode=secondDiv.firstChild;
+    alert(stextNode);//object text
+
+    var thirdDiv =document.getElementsByTagName('div')[2];
+    alert(thirdDiv);
+    var ttextNode=thirdDiv.firstChild;
+    alert(ttextNode);//object text
+    alert(ttextNode.nodeValue);//hello world
+    ttextNode.nodeValue= "你好世界！";
+    ttextNode.nodeValue="some <strong>other</strong>message";
+
+    /**创建文本节点 *****/
+    var element=document.createElement('div');
+    element.className="message";
+    var textNode=document.createTextNode("I don't like smoking!");
+    element.appendChild(textNode);
+
+    var anotherTextNode = document.createTextNode("very much");
+    element.appendChild(anotherTextNode);
+    document.body.appendChild(element);
+
+    /** splitText()指定位置分割nodeValue值 **/
+   //element: <div> I don't like smoking!</div>
+
+    var element=document.createElement('div');
+    element.className="message";
+    var textNode=document.createTextNode("I don't like smoking!");
+    element.appendChild(textNode);
+    document.body.appendChild(element);
+
+    alert(element.childNodes.length);//1
+    var newNode=element.firstChild.splitText(5);
+    alert(element.firstChild.nodeValue);//I don
+    alert(newNode.nodeValue);//'t like smoking!
+    alert(element.childNodes.length);//2
+
+</script>
+</body>
+</html>

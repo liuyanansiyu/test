@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" id="mybtn" value="DOM事件对象属性和方法测试" />
+<script>
+
+    //事件处理程序直接指定给目标元素 则currentTarget跟target都指的是 按钮元素
+    //currentTarget--事件处理程序处理事件的那个元素  target--事件的目标
+    var btn=document.getElementById("mybtn");
+    btn.onclick=function(){
+        alert(event);//object mouseEvent
+        alert(event.currentTarget===event.target);//true
+        alert(event.target===this);//true
+    }
+    document.body.onclick=function(event){
+        alert(event.currentTarget); //object HTMLBodyElement
+        alert(event.target); //object HTMLInputElement
+    }
+
+   /* var handler=function(event){
+        switch(event.type){
+            case "click":
+                alert("Clicked");
+                break;
+            case "mouseover":
+                event.target.style.backgroundColor="red";
+                break;
+            case "mouseout":
+                event.target.style.backgroundColor="blue";
+                break;
+        }
+    };
+    btn.onclick=handler;
+    btn.onmouseover=handler;
+    btn.onmouseout=handler;*/
+</script>
+</body>
+</html>

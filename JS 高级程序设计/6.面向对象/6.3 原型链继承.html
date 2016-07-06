@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+ <script>
+     function SuperType(){
+         this.property=true;
+     }
+     SuperType.prototype.getSuperValue=function(){
+         return this.property;
+     }
+     function SubType(){
+         this.subproperty=false;
+     }
+     SubType.prototype=new SuperType();//继承了SuperType
+     SubType.prototype.getSubValue=function(){
+         return this.subproperty;
+     }
+     var instance=new SubType();
+     console.log("instance.getSuperValue() ",instance.getSuperValue());//true
+     console.log("instance.getSubValue() ",instance.getSubValue());//false
+
+   /*instanceof  isPrototypeOf 确定原型和实例的关系*/
+     alert(instance instanceof Object);//true
+     alert(instance instanceof SuperType);//true
+     alert(instance instanceof SubType);//true
+     alert(Object.prototype.isPrototypeOf(instance));//true
+     alert(SubType.prototype.isPrototypeOf(instance));//true
+     alert(SuperType.prototype.isPrototypeOf(instance));//true
+
+
+
+ </script>
+
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+   <script>
+       window.find();
+       var num=0;
+       var num1=0;
+       var max=10;
+       var intervalId=null;
+       function incrementNumber(){
+           num++;
+           document.getElementById('count').innerHTML=num+"s";
+           if(num==max){
+               clearInterval(intervalId);
+               alert("done");
+           }
+       }
+       function startCount(){
+           intervalId=setInterval(incrementNumber,1000);
+       }
+
+
+       function incrementNumber1(){
+           num1++;
+           document.getElementById('count1').innerHTML=num1+"s";
+           if(num1<max){
+              setTimeout(incrementNumber1,1000);
+           }else{
+               alert("done");
+           }
+       }
+       function startCount1(){
+           setTimeout(incrementNumber1,1000);
+       }
+   </script>
+            <p id="count">还有</p>
+            <button type="button" onclick="startCount()">开始计时</button>
+             <p id="count1">还有</p>
+            <button type="button" onclick="startCount1()">开始计时</button>
+</body>
+</html>

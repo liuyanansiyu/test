@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+   <script>
+       //访问查询字符串的参数
+       function getQueryStringArgs(){
+           var qs=location.search.length>0 ? location.search.substring(1):"";
+           console.log("qs",qs);
+           var args={};
+           console.log( 'qs.split("&")',qs.split("&"));
+           var items=qs.length ? qs.split("&") :[];
+           console.log("items",items);
+           var item=null,name=null,value=null,i= 0,len=items.length;
+           for(i=0;i<len;i++){
+               item=items[i].split("=");
+               console.log("item[0]",item[0]);
+               console.log("item[1]",item[1]);
+               name=decodeURIComponent(item[0]);
+               value=decodeURIComponent(item[1]);
+               if(name.length){
+                   args[name]=value;
+               }
+           }
+           return args;
+       }
+
+
+     //  window.location="http://www.baidu.com";
+      // location.href="http://www.baidu.com";
+       location.hash="#hello";
+       location.search="?q=javascript&num=10";
+
+       var args=getQueryStringArgs();
+       console.log("args",args);
+       setTimeout(function(){
+           location.href="http://www.baidu.com";
+       },2000);
+   </script>
+
+</body>
+</html>

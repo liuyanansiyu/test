@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+ <script>
+     //问题：包含引用类型值的原型属性会被所有实例共享
+     function SuperType(){
+         this.colors=["red","blue","green"];
+     }
+     function SubType(){
+     }
+     SubType.prototype=new SuperType();
+     var instance1=new SubType();
+     instance1.colors.push("black");
+  //   alert(instance1.colors);//red,blue,green,black
+     var instance2=new SubType();
+   //  alert(instance2.colors);//red,blue,green,black
+
+
+     //解决办法：借用构造函数
+     function SuperType1(){
+         this.colors=["red","blue","green"];
+     }
+     function SubType2(){
+         SuperType.call(this);
+         alert(this)
+     }
+     SubType.prototype=new SuperType1();
+     var instance3=new SubType2();
+     instance3.colors.push("black");
+   //  alert(instance3.colors);//red,blue,green,black
+     var instance4=new SubType2();
+  //   alert(instance4.colors);//red,blue,green
+
+
+ </script>
+
+</body>
+</html>

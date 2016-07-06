@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+  <script>
+      function object(o){
+          function F(){}
+          F.prototype=o;
+          return new F();
+      }
+      var person={
+          name:"lyn",
+          friends:["shelby","Court","Van"]
+      }
+      var anotherPerson=object(person);
+      anotherPerson.name="Greg";
+      anotherPerson.friends.push("Tob");
+
+
+      var  yetAnotherPerson=object(person);
+      yetAnotherPerson.name="Linda";
+      yetAnotherPerson.friends.push("Brabie");
+
+      alert(person.friends);//shelby Court Van Tob Brabie
+
+  </script>
+</body>
+</html>

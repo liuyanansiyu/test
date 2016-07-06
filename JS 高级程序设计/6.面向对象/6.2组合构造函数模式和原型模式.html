@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+  <script>
+      //实例属性在构造函数中定义
+      function Person(name,age,job){
+          this.name=name;
+          this.age=age;
+          this.job=job;
+          this.friends=["lyn","yrb"];
+      }
+
+      //实例共享的属性和方法在原型模式中（重写了原型对象）定义
+      Person.prototype={
+          constructor:Person,
+          sayName:function(){
+              alert(this);
+              alert(this.name);
+          }
+      }
+      var person1=new Person("lyn",25,"software");
+      var person2=new Person("yrb",24,"software engineer");
+      person1.friends.push("lsy");
+      alert(person1.friends);//lyn yrb lsy
+      alert(person2.friends);//lyn yrb
+      alert(person1.friends==person2.friends);//false
+      alert(person1.sayName==person2.sayName);//true
+
+
+  </script>
+
+</body>
+</html>

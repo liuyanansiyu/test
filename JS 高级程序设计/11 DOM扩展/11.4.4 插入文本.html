@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div id="content" class="bd user disabled">
+    <p>this is a<strong>paragraph</strong></p>
+</div>
+<script >
+   //classList firefox 3.6 chrome支持
+    var div=document.getElementById('content');
+    div.classList.remove("disabled");
+    div.classList.add("newClass");
+    div.classList.toggle("user");
+    if(div.classList.contains("bd")){
+        alert("含有类名bd");
+    }
+
+
+    alert(div.innerText);
+    div.innerText="hello world";
+
+    div.innerText=div.innerText;
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+   /* 位置方法indexOf() 匹配时按照===全等进行比较 */
+    var person={name:"lyn"};
+    var people=[{name:"lyn"}];
+    var morepeople=[person];
+    console.log(people.indexOf(person));//-1
+    console.log(person.valueOf());//Object Object
+    console.log(people.indexOf(person.valueOf()));//-1
+    console.log(morepeople.indexOf(person)); //0
+
+
+
+  /*  Boolean 引用类型*/
+    var falseobject=new Boolean(false); //falseobject是Boolean对象
+    console.log("new 创建的的布尔对象实例",falseobject);//false
+   console.log("new 创建的的布尔对象实例typeof",typeof falseobject);//object
+   console.log("new 创建的的布尔对象实例instanceof", falseobject instanceof Boolean); //true
+   var result=falseobject && true;
+    console.log(result); //true
+
+    var falseobject=false; //falseobject是基本的布尔数据类型
+    console.log("基本boolean类型typeof",typeof falseobject); //boolean
+   console.log("基本boolean类型instanceof ", falseobject instanceof Boolean);//false
+
+</script>
+</body>
+</html>

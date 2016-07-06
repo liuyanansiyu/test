@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+
+</head>
+<body>
+<div id="myDiv" class="myDiv" title="hello" lang="en" dir="ltr" length="3" style="color:red" onclick="javascript:alert(0)">hello</div>
+<script>
+    /**
+    var div =document.getElementById('myDiv');
+    alert(div.onclick);//function onclik(event){javascript:alert(0)}
+    alert(div.getAttribute('onclick'));//javascript：alert(0)
+    alert(div.tagName);//DIV
+    alert(div.nodeName);//DIV
+    alert(div.tagName==div.nodeName);//true
+    alert(div.length);//自定义属性 undefined
+    alert(div.style);//通过属性访问style object CSSStyleDeclaration
+    alert(div.getAttribute('style')); //color:red
+    div.id="someOtherId";
+    div.className="ft";
+    div.dir="rtl";
+    div.title="some other text";
+
+
+   /* attribute属性*/
+    var element=document.getElementById('myDiv');
+    var id=element.attributes.getNamedItem("id").nodeValue;//取得特性id特性的值
+    alert(id);//myDiv
+    var id=element.attributes["id"].nodeValue;
+    alert(id);//myDiv
+
+    element.attributes["id"].nodeValue="someOtherId";//给id特性赋值
+    var oddAttr=element.attributes.removeNamedItem("id");
+    alert(oddAttr);//object Attr
+
+    var removeAttr=element.removeAttribute("class");
+    alert(removeAttr);//undefined
+
+    function outputAttributes(element){
+        var pairs=new Array(),attrName,attrValue, i,len;
+        for(i=0;len=element.attributes.length,i<len;i++){
+            attrName=element.attributes[i].nodeName;
+            attrValue=element.attributes[i].nodeValue;
+            if(element.attributes[i].specified)
+              pairs.push(attrName + "=\"" + attrValue +"\"" );
+        }
+        return pairs.join(" ");
+    }
+   alert(outputAttributes(element)) ; //title="hello" lang="en" dir="ltr" length="3" style="color:red" onclick="javascript:alert(0)"
+
+</script>
+</body>
+</html>

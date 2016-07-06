@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+    function SuperType(name){
+        this.name=name;
+        this.colors=["red","blue","gray"];
+    }
+    SuperType.prototype.sayName=function(){
+        alert(this.name);
+    }
+
+    function SubType(name,age){
+        SuperType.call(this,name); //继承属性 //第二次调用SuperType()
+        this.age=age;
+    }
+
+    //继承方法
+    SubType.prototype=new SuperType();   //第一次调用SuperType()
+    SubType.prototype.constructor=SubType;
+    SubType.prototype.sayAge=function(){
+        alert(this.age);
+    }
+
+    var  instance1=new SubType("lyn",25);
+    instance1.colors.push("black");
+    alert(instance1.colors);//red blue gray black
+    instance1.sayAge();//25
+    instance1.sayName();//lyn
+
+
+    var instance2=new SubType("siyu",7);
+    instance2.colors.push("green");
+    alert(instance2.colors);//red blue gray green
+    instance2.sayAge();//7
+    instance2.sayName();//siyu
+
+
+</script>
+</body>
+</html>

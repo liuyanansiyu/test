@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+     <title></title>
+
+
+</head>
+<body>
+   <input type="button" id="mybtn" value="测试不同的事件处理程序" />
+
+   <script >
+
+       //IE8及以下attachEvent 添加事件处理程序
+           var btn=document.getElementById("mybtn");
+           btn.attachEvent("onclick",function(){
+               alert('Clicked');
+             //  alert(this);//this 为window
+           })
+           btn.attachEvent("onclick",function(){
+               alert('hello');
+           })
+        //IE9  Clicked hello
+       //IE7、IE8 hello Clicked
+
+      //移除事件处理程序
+       var btn=document.getElementById("mybtn");
+       var handler=function(){
+           alert("Clicked");
+       }
+       btn.attachEvent("onclick",handler);
+       btn.detachEvent("onclick",handler);
+   </script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div id="test">
+    <p><b>hello</b></p>
+    <ul>
+        <li>Item1 </li>
+        <li>Item1 </li>
+        <li>Item1 </li>
+        <li>Item1 </li>
+    </ul>
+</div>
+<script type="text/javascript">
+
+    /* createTreeWalker()方法遍历所有元素 IE不支持
+
+     var divElem=document.getElementById('test');
+     var walker=document.createTreeWalker(divElem, NodeFilter.SHOW_ELEMENT,null,false);
+     var node=walker.nextNode();
+     while(node!=null){
+     console.log(node.tagName);//DIV P B  UL LI LI LI LI
+     node=iterator.nextNode();
+     }
+     */
+
+    // 不定义过滤器filter,也可遍历指定元素 LI元素
+    var div=document.getElementById('test');
+    var walker=document.createTreeWalker(div, NodeFilter.SHOW_ELEMENT,null,false);
+    walker.firstChild();
+    walker.nextSibling();
+
+    var node=walker.firstChild();
+    while(node!=null){
+        console.log(node.tagName);// LI LI LI LI
+        node=walker.nextSibling();
+    }
+
+    </script>
+</body>
+</html>

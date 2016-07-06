@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+
+
+</head>
+<body>
+  <div id="test">
+      <p><b>hello</b></p>
+      <ul>
+          <li>Item1 </li>
+          <li>Item1 </li>
+          <li>Item1 </li>
+          <li>Item1 </li>
+      </ul>
+  </div>
+  <script type="text/javascript">
+      // createNodeIterator()方法遍历元素 IE不支持
+      var divElem=document.getElementById('test');
+      var iterator=document.createNodeIterator(divElem, NodeFilter.SHOW_ELEMENT,null,false);
+      var node=iterator.nextNode();
+      while(node!=null){
+          console.log(node.tagName);//DIV P B  UL LI LI LI LI
+          node=iterator.nextNode();
+      }
+
+
+
+      //指定遍历的元素是 LI元素
+      var div=document.getElementById('test');
+      var filter=function(node){
+          return node.tagName.toLocaleLowerCase()=="li" ? NodeFilter.FILTER_ACCEPT: Node.FILTER_SKIP;
+      }
+      var iterator=document.createNodeIterator(div, NodeFilter.SHOW_ELEMENT,filter,false);
+      var node=iterator.nextNode();
+      while(node!=null){
+          console.log(node.tagName);// LI LI LI LI
+          node=iterator.nextNode();
+      }
+
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body onload="init()">
+<button type="button" id="myButton">测试是否获得焦点</button>
+<script type="text/javascript">
+    function init(){
+        if(document.readyState=="loading"){
+            alert("文档正在加载")
+        }
+        if(document.readyState=="complete"){
+            alert("文档加载完成")
+        }
+    }
+    var button=document.getElementById("myButton");
+    button.focus();
+    alert(document.activeElement);//object HTMLButtonElement
+    alert(document.activeElement===button);//true
+    alert(document.hasFocus());//true
+</script>
+</body>
+</html>

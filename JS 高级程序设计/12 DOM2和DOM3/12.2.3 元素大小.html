@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+ <div>元素大小测试</div>
+<script>
+    //某元素在页面上的左偏移量
+    function getElementLeft(element){
+        var actualLeft=element.offsetLeft;
+        var current=element.offsetParent;
+        while(current!=null){
+            actualLeft += current.offsetLeft;
+            current = element.offsetParent;
+        }
+        return actualLeft;
+    }
+    //某元素在页面上的上偏移量
+    function getElementTop(element){
+        var actualTop=element.offsetTop;
+        var current=element.offsetParent;
+        while(current!=null){
+            actualTop += current.offsetTop;
+            current = element.offsetParent;
+        }
+        return actualTop;
+    }
+    function getBoundingClientRect(element){
+        var scrollTop = document.documentElement.scrollTop;
+        var scrollLeft= document.documentElement.scrollLeft;
+        if(element.getBoundingClientRect){
+            if(typeof arguments.callee.offset !="number"){
+                var temp=document.createElement("div");
+                temp.style.cssText = "position:absolute;left:0;top:0";
+                document.body.appendChild(temp);
+                arguments.callee.offset = -temp.getBoundingClientRect().top-scrollTop;
+                document.body.removeChild(temp);
+                temp=null;
+            }
+            var rect=element.getBoundingClientRect();
+            var offset=arguments.callee.offset;
+            return{
+                    left:rect.left+offset,
+                    right:rect.right+offset,
+                    top:rect.top+offset,
+                    bottom:rect.bottom+offset
+            };
+        }else{
+            var actualLeft= getElementLeft(element);
+            var actualTop = getElementTop(element);
+            return{
+                left:actualLeft-scrollLeft,
+                right:actualLeft+element.offsetWidth-scrollLeft,
+                top:actualTop-scrollTop,
+                bottom:actualTop+element.offsetHeight-scrollTop
+            }
+            }
+    }
+
+
+        var divElement=document.getElementsByTagName('div')[0];
+        var temp= getBoundingClientRect(divElement);
+        console.log(temp.left);
+        console.log(temp.right);
+        console.log(temp.top);
+        console.log(temp.bottom);
+
+
+
+
+
+</script>
+</body>
+</html>

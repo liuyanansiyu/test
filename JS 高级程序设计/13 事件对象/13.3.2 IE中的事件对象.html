@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" id="mybtn" value="IE事件对象属性和方法测试" />
+<a id="aLink" href="www.baidu.com">取消默认行为测试</a>
+    <script>
+
+        /** IE DOM0级事件处理程序中，event为window.event ;DOM2级 传递event对象为参数  */
+        var btn=document.getElementById("mybtn");
+        btn.onclick= function () {
+            alert(window.event);//object Event
+            alert(window.event.srcElement);//object HTMLInputElement
+            alert(this);
+            alert(window.event.srcElement===this);//true
+        }
+        btn.attachEvent("onclick",function(event){
+            console.log(window.event);//object Event
+           console.log(event);       //object Event
+            console.log(event===window.event) //false
+            alert(window.event.srcElement);//object HTMLInputElement
+            alert(this);//object Window
+            alert(window.event.srcElement==this);//false
+        })
+
+        /** 阻止默认行为 returnValue 相当于DOM的preventDefault() */
+        var link=document.getElementById("aLink");
+        link.onclick= function () {
+            event.returnValue=false;
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+
+/*    创建对象的构造函数模式  */
+    function Person(name,age,job){
+        alert(this)
+        this.name=name
+        this.age=age;
+        this.job=job;
+        this.sayName=function(){
+            alert(this.name);
+        }
+    }
+    var person1=new Person("lyn",26,"Software");
+    person1.sayName();//lyn Person函数内alert（this) 为object object
+    Person("lyn",26,"Software");// Person函数内alert（this) 为object  window
+    window.sayName();//lyn
+    console.log("person1 "+person1);//object
+    console.log("typeof person1",typeof person1);//object
+    console.log("person1 instanceof Object",person1 instanceof Object);//true
+    console.log("person1 instanceof Person",person1 instanceof Person);//true
+
+    function Person1(name,age,job){
+    alert(this)
+    this.name=name;
+    this.age=age;
+    this.job=job;
+    this.sayName=new Function("alert(this.name)");
+    }
+    var person2=new Person1("yrb",26,"Software");
+    alert(person2.sayName);//yrb
+
+
+
+
+</script>
+</body>
+</html>

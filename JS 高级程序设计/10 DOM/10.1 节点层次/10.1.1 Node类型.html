@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div id="test" >
+    <span id="text">测试DOM属性</span>
+</div>
+<table>
+    <tr>
+        <td id="john" name="myname">John</td>
+        <td>Doe</td>
+        <td id="jack">Jack</td>
+    </tr>
+</table>
+
+<script>
+
+       //属性节点
+       var attributeNode=document.getElementById('john').getAttributeNode('name');
+       alert(attributeNode.nodeName);//name
+       alert(attributeNode.nodeType);//2
+       alert(attributeNode.nodeValue);//myname
+
+        //元素节点
+        var elementNode=document.getElementsByTagName('td')[0].childNodes;
+        alert(document.getElementsByTagName('td')[0].hasChildNodes());//true
+        alert(elementNode);//object NodeList
+        var count=elementNode.length;
+        alert(document.getElementsByTagName('td')[0].childNodes[0]) //object text
+        alert(document.getElementsByTagName('td')[0].childNodes[0].nodeName) //#text
+        alert(count);//1
+        var tableNode=document.getElementsByTagName('td')[2].childNodes;
+        alert(tableNode);//object NodeList
+        alert(tableNode.length)//1
+        alert(tableNode[0]);//object text
+
+
+</script>
+</body>
+</html>

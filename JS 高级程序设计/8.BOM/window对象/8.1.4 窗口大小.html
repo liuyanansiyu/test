@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+</head>
+<style>
+    html{height:100%}
+</style>
+<body>
+  <script>
+
+      console.log('window.screen.availHeight'+window.screen.availHeight);//
+      console.log('window.screen.availWidth'+window.screen.availWidth);
+      console.log('window.screen.height'+window.screen.height);
+      console.log('window.screen.width'+window.screen.width);
+
+      var pageWidth=window.innerWidth;
+      var pageHeight=window.innerHeight;
+      console.log('window.innerWidth'+pageWidth);
+      console.log('window.innerHeight'+pageHeight);
+      console.log('window.outerWidth'+window.outerWidth);
+      console.log('window.outerHeight'+window.outerHeight);
+      if(typeof pageWidth !='number'){
+          if(document.compatMode =='CSS1Compat'){
+              pageWidth=document.documentElement.clientWidth;
+              pageHeight=document.documentElement.clientHeight;
+          }else{
+              pageWidth=document.body.clientWidth;
+              pageHeight=document.body.clientHeight;
+          }
+      }
+      console.log('document.body.clientWidth',document.body.clientWidth);
+      console.log('document.body.clientHeight',document.body.clientHeight);
+      console.log('document.documentElement.clientWidth'+document.documentElement.clientWidth);
+      console.log('document.documentElement.clientHeight'+document.documentElement.clientHeight);
+      console.log('document.body.offsetWidth'+document.body.offsetWidth);
+      console.log('document.body.offsetHeight'+document.body.offsetHeight);
+      console.log('document.body.scrollWidth',document.body.scrollWidth);
+      console.log('document.body.scrollHeight',document.body.scrollHeight);
+      console.log('document.documentElement.scrollHeight'+document.documentElement.scrollHeight);
+
+      window.onscroll=function(){
+          console.log('document.body.scrollHeight',document.body.scrollHeight);
+          console.log('document.documentElement.scrollWidth'+document.documentElement.scrollWidth);
+          console.log('document.documentElement.scrollHeight'+document.documentElement.scrollHeight);
+      }
+
+
+
+            /** chrome 下
+             window.screen.availHeight728
+             8.1.4 窗口大小.html:13 window.screen.availWidth1366
+             8.1.4 窗口大小.html:14 window.screen.height768
+             8.1.4 窗口大小.html:15 window.screen.width1366
+             8.1.4 窗口大小.html:19 window.innerWidth1366
+             8.1.4 窗口大小.html:20 window.innerHeight643
+             8.1.4 窗口大小.html:21 window.outerWidth1366
+             8.1.4 窗口大小.html:22 window.outerHeight728
+             8.1.4 窗口大小.html:32 document.body.clientWidth 1350
+             8.1.4 窗口大小.html:33 document.body.clientHeight 0
+             8.1.4 窗口大小.html:34 document.documentElement.clientWidth1366  浏览器可视部分高度
+             8.1.4 窗口大小.html:35 document.documentElement.clientHeight643
+             8.1.4 窗口大小.html:36 document.body.offsetWidth1350
+             8.1.4 窗口大小.html:37 document.body.offsetHeight0
+             document.body.scrollWidth 1366
+             document.body.scrollHeight 643
+             document.documentElement.scrollWidth1366
+             document.documentElement.scrollHeight643
+      */
+
+      /**  IE9下
+       日志: window.screen.availHeight728
+       日志: window.screen.availWidth1366
+       日志: window.screen.height768
+       日志: window.screen.width1366
+       日志: window.innerWidth1366
+       日志: window.innerHeight620
+       日志: window.outerWidth1382
+       日志: window.outerHeight744
+       日志: document.body.clientWidth1350
+       日志: document.body.clientHeight0
+       日志: document.documentElement.clientWidth1366
+       日志: document.documentElement.clientHeight620
+       日志: document.body.offsetWidth1350
+       日志: document.body.offsetHeight0
+       日志: document.body.scrollWidth1350
+       日志: document.body.scrollHeight0
+       日志: document.documentElement.scrollWidth1366
+       日志: document.documentElement.scrollHeight620
+
+       */
+      /** Firefox
+       window.screen.availHeight728
+       window.screen.availWidth1366
+       window.screen.height768
+       window.screen.width1366
+       window.innerWidth1366
+       window.innerHeight634
+       window.outerWidth1382
+       window.outerHeight744
+       document.body.clientWidth 1350
+       document.body.clientHeight 0
+       document.documentElement.clientWidth1366
+       document.documentElement.clientHeight634
+       document.body.scrollWidth 1350
+       document.body.scrollHeight 0
+       document.documentElement.scrollWidth1366
+       document.documentElement.scrollHeight634
+
+       */
+
+   //  window.innerWidth 和 document.documentElement.clientWidth  document.documentElement.scrollHeight  浏览器可视部分高度 相等
+   // window.innerHeight  document.documentElement.clientHeight document.documentElement.scrollHeight  浏览器可视部分高度 相等 可视部分（工具栏 菜单栏 任务栏 等不带）
+  </script>
+
+  <div style="background:#f4f4f4;height:900px;">你好</div>
+</body>
+</html>

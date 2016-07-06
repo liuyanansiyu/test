@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>测试事件绑定函数</title>
+    <script>
+
+        //兼容IE和非IE浏览器
+        function addEvent(ele, type, func){
+            if( ele.addEventListener){
+                ele.addEventListener(type, func, false ); //默认事件是冒泡
+            }
+            else if(ele.attachEvent){
+                ele.attachEvent("on"+type, func);
+            }
+            else{
+                ele["on"+type]=func;
+            }
+        }
+
+        function clickObjLi (event){
+            var currTarget = event.target||event.srcElement;
+            alert(currTarget.innerHTML);
+        }
+
+        window.onload = function(){
+            var liObj, ulObj;
+           // ulObj = document.getElementsByTagName('ul')[0];
+            ulObj=document.getElementById('ul');
+            addEvent(ulObj, 'click', clickObjLi);
+        };
+    </script>
+</head>
+<body>
+<div>
+    <ul id="ul">
+        <li class="item1">测试事件绑定1</li>
+        <li class="item2">测试事件绑定2</li>
+        <li class="item3">测试事件绑定3</li>
+        <li class="item4">测试事件绑定4</li>
+    </ul>
+</div>
+</body>
+</html>

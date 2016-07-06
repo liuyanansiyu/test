@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+    var message;
+    console.log(typeof(message)); //undefined  变量未初始化
+    console.log(typeof(age)); //undefined  变量未声明
+    console.log(typeof(undefined));//undefined
+    console.log(typeof(null));//object  null 为空对象的引用
+    console.log(null==undefined); //true
+
+
+
+  /*  Boolean类型 */
+    var message="hello world";
+    console.log("hello  world 被转化为对应的Boolean 值为："+Boolean(message));//true 非空字符串转化为true
+    console.log("hello  world 被转化为对应的Boolean 值为："+Boolean(""));//空字符串转化为false
+    console.log("true 被转化为对应的Boolean 值为："+Boolean(true));//Boolean类型true 转化为true
+    console.log("false 被转化为对应的Boolean 值为："+Boolean(false));//Boolean类型false 转化为false
+    console.log("Number类型0 被转化为对应的Boolean 值为："+Boolean(0));//Number类型0 转化为false
+    console.log("Number类型NaN 被转化为对应的Boolean 值为："+Boolean(NaN));//Number类型NaN 转化为false
+    console.log("Number类型非0数字 被转化为对应的Boolean 值为："+Boolean(2));//Number类型0 转化为true
+    console.log("Object类型 被转化为对应的Boolean 值为："+Boolean(null));//Object类型 null对象 转化为false,除了null对象，转化为true
+    console.log("Undefined类型 被转化为对应的Boolean 值为："+Boolean(undefined));//undefined类型 转化为false
+
+   //Number类型 isNaN() 参数是不能被转换为数值的值，函数才返回true
+    console.log(isNaN(NaN));//true
+    console.log(isNaN(12)); //false
+    console.log(isNaN("12")); //false "12"可以转换为数字
+
+
+
+    /*数值转换  Number()函数，parseInt()，parseFloat()函数*/
+   console.log("null转换为数值为："+Number(null));//0
+   console.log("undefined转换为数值为："+Number(undefined));//NaN
+   console.log("Boolean true转换为数值为："+Number(true));//1
+   console.log('空字符串""转换为数值为：'+Number(""));//0
+   console.log('字符串只包含数字转换为数值为：'+Number(+001));//1 忽略前导0
+   console.log('字符串转换为数值为：'+Number("hello"));//NaN
+
+ /* String()函数将任何类型的值转换为字符串*/
+   var v=10;
+    console.log("数值10转换为字符串："+String(v));
+    console.log("数值10转换为字符串："+String(v));
+</script>
+
+</body>
+</html>

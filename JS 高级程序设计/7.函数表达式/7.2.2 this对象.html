@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+ <script>
+
+
+   /*
+    https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this
+    情况一：纯粹的函数调用
+
+     这是函数的最通常用法，属于全局性调用，因此this就代表全局对象Global。*/
+
+   var x = 1;
+
+   function test(){
+
+       alert(this.x); //this 指向window
+
+   }
+
+   test(); // 1
+
+
+ /*  情况二：作为对象方法的调用   this 指向这个对象*/
+   var name="the window";
+     var object={
+         name:"my object",
+         getName:function(){
+             return this.name;
+
+         }
+     }
+     alert(object.getName);//function(){return this.name}
+     alert(object.getName());// my object  此处this指向调用方法的对象object
+
+
+
+  /* 情况三 作为构造函数调用
+
+   所谓构造函数，就是通过这个函数生成一个新对象（object）。这时，this就指这个新对象。*/
+
+   function test(){
+
+       this.x = 2;
+
+   }
+   var o = new test();
+
+   alert(o.x); // 2
+
+
+
+ </script>
+</body>
+</html>

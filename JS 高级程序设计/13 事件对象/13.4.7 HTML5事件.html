@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+<img src="test.jpg"/>
+<script>
+    var EventUtil={
+        addHandler:function(ele,type,handler){
+            if( ele.addEventListener){
+            ele.addEventListener(type, handler, false ); //默认事件是冒泡
+            }
+            else if(ele.attachEvent){
+                 ele.attachEvent("on"+type, handler);
+             }
+            else{
+                 ele["on"+type]=handler;
+            }
+        },
+        getEvent:function(event) {
+        return event?event:window.event;
+        },
+    }
+//beforeunload 事件
+    EventUtil.addHandler(window,"beforeunload",function(event){
+        event=EventUtil.getEvent(event);
+        var message="I am ready to go";
+        event.returnValue=message;
+        return message;
+    })
+    //DOMContentLoaded 事件 DOM树形成以后就触发 早于window load事件
+    EventUtil.addHandler(document,"DOMContentLoaded",function(event){
+        alert("Content loaded");
+    })
+    //window load 等待一切加载完毕触发
+   window.onload=function(){
+       alert("all loaded");
+   }
+</script>
+</body>
+</html>

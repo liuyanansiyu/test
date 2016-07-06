@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+   <script >
+       function createComparisonFunction(propertyName){
+           return function(object1,object2){
+               var value1=object1[propertyName];//[]通过变量访问属性
+               var value2=object2[propertyName];
+               if(value1<value2){
+                   return -1;
+               }else if(value1>value2){
+                   return 1;
+               }else {
+                   return 0;
+               }
+           }
+       }
+       var compareNames=createComparisonFunction("name");
+       console.log("compareNames ",compareNames);
+       /* 结果：function(object1,object2){
+       var value1=object1[propertyName];//[]通过变量访问属性
+       var value2=object2[propertyName];
+       if(value1<value2){
+           return -1;
+       }else if(value1>value2){
+           return 1;
+       }else {
+           return 0;
+       }
+       }*/
+
+       var result=compareNames({name:"lyn"},{name:"yrb"});
+       console.log("result ",result); //-1
+
+
+
+       var pubvar = 1;
+       function pub () {
+           var pravar = 2;
+           return pubvar + pravar;
+       }
+
+       alert(pub());//3
+
+   /*
+       const 定义的变量仅存在于最近的{}之内 例子如下
+       */
+
+       var foo=true;
+       if(foo){
+           var a=2;
+           const b=3;  //其定义的变量仅存在于最近的{}之内
+           a=3;
+    /*       b=4;//const定义的变量值不能修改 出错*/
+       }
+       console.log("a ",a); //3
+  /*     console.log("b",b);//Uncaught ReferenceError: b is not defined*/
+
+
+
+   </script>
+</body>
+</html>

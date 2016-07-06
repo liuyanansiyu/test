@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script>
+    function createFunctions(){
+        var result=new Array();
+        for(var i=0;i<10;i++){
+            result[i]=function(){
+                console.log("i"+i);
+                return i;
+            }
+        }
+        return result;
+    }
+    console.log(createFunctions())//长度为10数组 每个元素是function()  ,i值都为10
+
+    function createFunctions1(){
+        var result=new Array();
+        for(var i=0;i<10;i++){
+            result[i]=function(num){
+                    return num;
+            }(i);
+        }
+        return result;
+    }
+    console.log(createFunctions1());//[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    function createFunctions2(){
+        var result=new Array();
+        for(var i=0;i<10;i++){
+            result[i]=function(num){
+                return function(){
+                    return num;
+                }
+            }(i);
+        }
+        return result;
+    }
+    console.log(createFunctions2());//长度为10数组 元素为function,function 里的num 分别为0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+/*匿名函数写法*/
+    (function (name){
+        return name;
+    })("Myname");
+ /*   这种方式进行调用，免去了进行赋值，再调用的繁琐过程，但是需要在函数体外围加上一对括号，然后再以括号调用，
+    括号中的字符串 "Myname"传递给了函数的 name参数。*/
+
+
+    (function(){
+
+     }(i))
+
+    var fn=function(){}(i)
+
+   [function(){ }()] ;
+</script>
+</body>
+</html>

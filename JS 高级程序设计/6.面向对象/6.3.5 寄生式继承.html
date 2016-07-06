@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+  <script>
+      function object(o){
+          function F(){}
+          F.prototype=o;
+          return new F();
+      }
+      function createAnother(original){
+          var clone=object(original);//通过调用函数创建一个新对象
+          alert(clone);//object Object
+          clone.sayHi=function(){
+              alert("hi");
+          }
+          return clone;
+      }
+
+      var person={
+          name:"lyn",
+          friends:["shelby","court","van"]
+      }
+      var anotherPerson=createAnother(person);
+      anotherPerson.sayHi();//hi
+
+  </script>
+</body>
+</html>

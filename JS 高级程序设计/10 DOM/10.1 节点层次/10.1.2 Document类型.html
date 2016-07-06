@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <script>
+        console.log('document.doctype',document.doctype);//object DocumentType
+        var html=document.documentElement;//object HTMLHtmlElement
+        console.log('document.documentElement',document.documentElement);//<html>
+        console.log('document.firstChild',document.firstChild);//[object DocumentType]
+        console.log('document.childNodes[0]',document.childNodes[0]);//[object DocumentType]
+        console.log(html==document.childNodes[0]);
+        console.log(html==document.firstChild);
+
+        /** IE8
+        document.doctype null
+        document.documentElement[object HTMLHtmlElement]
+        document.firstChild[object HTMLCommentElement]
+        document.childNodes[0][object HTMLCommentElement]
+        false
+        false
+       **/
+
+        /** IE9
+          document.doctype[object DocumentType]
+          document.documentElement[object HTMLHtmlElement]
+          document.firstChild[object DocumentType]
+          document.childNodes[0][object DocumentType]
+          false
+          false
+         */
+
+        /** Firefox
+         * document.doctype [object DocumentType]
+         document.documentElement <html>
+         document.firstChild [object DocumentType]
+         document.childNodes[0] [object DocumentType]
+         false
+         false
+         */
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
